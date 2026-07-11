@@ -26,6 +26,7 @@
     "projects": {
       "title": "Projetos",
       "subtitle": "Design de Soluções & Interface",
+      "subtitleWeb": "Aplicações Web & Mobile",
       "viewSite": "Ver site",
       "lacos": {
         "name": "Laços",
@@ -125,6 +126,7 @@
     "projects": {
       "title": "Projects",
       "subtitle": "Design Solutions & Interface",
+      "subtitleWeb": "Web & Mobile Applications",
       "viewSite": "View site",
       "lacos": {
         "name": "Laços",
