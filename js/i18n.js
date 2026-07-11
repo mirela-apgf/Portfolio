@@ -34,6 +34,9 @@ class LanguageManager {
         const t = this.translations[lang];
         if (!t) return;
 
+        // Atualizar o botão imediatamente ao aplicar o idioma
+        this.updateLanguageButton();
+
         // Navegação
         document.querySelectorAll('nav a').forEach(link => {
             const href = link.getAttribute('href');
@@ -95,8 +98,21 @@ class LanguageManager {
         const projectsTitle = document.querySelector('#projetos .section-title');
         if (projectsTitle) projectsTitle.textContent = t.projects.title;
 
-        const projectsSubtitle = document.querySelector('.section-subtitle');
-        if (projectsSubtitle) projectsSubtitle.textContent = t.projects.subtitle;
+        // Atualiza TODAS as legendas de seção de projetos
+        document.querySelectorAll('.section-subtitle').forEach(el => {
+            const text = el.textContent.trim();
+            if (
+                text === 'Design de Soluções & Interface' ||
+                text === 'Design Solutions & Interface'
+            ) {
+                el.textContent = t.projects.subtitle;
+            } else if (
+                text === 'Aplicações Web & Mobile' ||
+                text === 'Web & Mobile Applications'
+            ) {
+                el.textContent = t.projects.subtitleWeb;
+            }
+        });
 
         // Projetos individuais
         this.updateProjectCards(lang, t);
@@ -144,7 +160,8 @@ class LanguageManager {
     }
 
     updateTags(lang, t) {
-        const tagMappings = {
+        // Mapeamento PT -> chave (usado para atribuir data-tag-key na primeira execução)
+        const ptToKey = {
             'Acessibilidade': 'accessibility',
             'Design System': 'designSystem',
             'UX': 'ux',
@@ -170,21 +187,25 @@ class LanguageManager {
             'MySQL': 'mysql'
         };
 
+        // Todas as chaves possíveis (PT + EN) mapeadas para a chave de tradução
+        const allTextsToKey = {};
+        Object.entries(ptToKey).forEach(([ptText, key]) => {
+            allTextsToKey[ptText] = key;
+        });
+        // Adicionar também os valores em EN ao mapa reverso
+        Object.entries(t.tags).forEach(([key, enText]) => {
+            allTextsToKey[enText] = key;
+        });
+
         document.querySelectorAll('.tag').forEach(tag => {
-            const currentText = tag.textContent;
-            // Procurar a chave reversa se estiver em EN
-            let key = tagMappings[currentText];
-            
-            if (!key) {
-                // Se não achou a chave, pode ser que já esteja em EN, vamos procurar o valor correspondente em t.tags
-                for (const [pt, k] of Object.entries(tagMappings)) {
-                    if (t.tags[k] === currentText) {
-                        key = k;
-                        break;
-                    }
-                }
+            // Garantir que a tag tenha data-tag-key definido
+            if (!tag.dataset.tagKey) {
+                const currentText = tag.textContent.trim();
+                const key = allTextsToKey[currentText];
+                if (key) tag.dataset.tagKey = key;
             }
 
+            const key = tag.dataset.tagKey;
             if (key && t.tags[key]) {
                 tag.textContent = t.tags[key];
             }
@@ -194,7 +215,8 @@ class LanguageManager {
     updateLanguageButton() {
         const btn = document.getElementById('language-toggle');
         if (btn) {
-            btn.textContent = this.currentLanguage === 'pt' ? 'EN' : 'PT';
+            // O botão exibe o idioma ATUAL (PT quando em português, EN quando em inglês)
+            btn.textContent = this.currentLanguage === 'pt' ? 'PT' : 'EN';
         }
     }
 }
