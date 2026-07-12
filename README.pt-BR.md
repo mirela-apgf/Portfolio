@@ -38,7 +38,7 @@ Portfólio pessoal desenvolvido para apresentar meus principais projetos, forma�
 ## 📸 Prévia do Site
 
 <p align="left">
-  <img src="readme/images/portfolio-home.png" width="700">
+  <img src="readme/images/home.png" width="700">
 </p>
 
 <br>
