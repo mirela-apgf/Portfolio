@@ -4,19 +4,17 @@
 
 # 💼 Personal Portfolio
 
-Personal portfolio developed to showcase my projects, technical skills, education, certifications, and professional journey in technology.
-
-The website was built with a focus on responsive design, usability, and clean visual presentation, providing an intuitive browsing experience across different devices.
+Personal portfolio developed to showcase my main projects, education, skills, and certifications.
 
 <br>
 
 ## 🚀 Features
 
-- Responsive design
-- Light and Dark mode
-- Interactive project showcase
-- Downloadable resume
-- Certifications section
+- Responsive layout
+- Language switch
+- Project showcase
+- Resume download
+- Certifications link
 - Social media and contact links
 - Smooth animations
 
@@ -28,14 +26,6 @@ The website was built with a focus on responsive design, usability, and clean vi
 - CSS3
 - JavaScript
 - JSON
-
-<br>
-
-## 💡 About the Project
-
-This portfolio was designed to present my academic and personal projects in a professional and organized way.
-
-It reflects my learning journey in software development and my interest in creating clean, user-friendly, and visually appealing interfaces.
 
 <br>
 
