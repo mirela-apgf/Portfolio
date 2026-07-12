@@ -38,9 +38,9 @@ Personal portfolio developed to showcase my main projects, education, skills, an
 ## 📸 Website Preview
 
 <p align="center">
-  <img src="readme/images/home.png" width="32%">
-  <img src="readme/images/about.png" width="32%">
-  <img src="readme/images/projects.png" width="32%">
+  <img src="readme/images/home.png" width="34%">
+  <img src="readme/images/about.png" width="34%">
+  <img src="readme/images/projects.png" width="34%">
 </p>
 
 <br>
