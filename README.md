@@ -10,13 +10,13 @@ Personal portfolio developed to showcase my main projects, education, skills, an
 
 ## 🚀 Features
 
-- Responsive layout
-- Language switch
-- Project showcase
-- Resume download
-- Certifications link
-- Social media and contact links
-- Smooth animations
+* Responsive layout
+* Language toggle
+* Project showcase
+* Resume download
+* Link to certifications
+* Links to social media and contact
+* Smooth animations
 
 <br>
 
