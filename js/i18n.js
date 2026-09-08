@@ -135,16 +135,31 @@ class LanguageManager {
 
     updateProjectCards(lang, t) {
         const allCards = document.querySelectorAll('.project-card');
-        const keys = ['lacos', 'calmly', 'organiza', 'filaCerta', 'orbe', 'admSolucoes', 'cambioFacil', 'batalhas', 'calculadora', 'clima'];
+
+        const keys = [
+            'lacos',
+            'calmly',
+            'organiza',
+            'filaCerta',
+            'orbe',
+            'galoDoTempo',
+            'admSolucoes',
+            'cambioFacil',
+            'batalhas',
+            'calculadora',
+            'clima'
+        ];
 
         allCards.forEach((card, index) => {
             const key = keys[index];
+
             if (card && key) {
                 const projectData = t.projects[key];
                 const nameEl = card.querySelector('.project-name');
                 const descEl = card.querySelector('.project-description');
 
                 if (nameEl) nameEl.textContent = projectData.name;
+
                 if (descEl) {
                     if (key === 'cambioFacil') {
                         descEl.innerHTML = `${projectData.description}<span class="final"><br>${t.projects.cambioFacilNote}</span>`;
@@ -184,14 +199,19 @@ class LanguageManager {
             'Figma': 'figma',
             'Vs Code': 'vscode',
             'Java': 'java',
-            'MySQL': 'mysql'
+            'MySQL': 'mysql',
+            'IoT': 'iot',
+            'ESP32': 'esp32',
+            'Nuvem': 'cloud'
         };
 
         // Todas as chaves possíveis (PT + EN) mapeadas para a chave de tradução
         const allTextsToKey = {};
+
         Object.entries(ptToKey).forEach(([ptText, key]) => {
             allTextsToKey[ptText] = key;
         });
+
         // Adicionar também os valores em EN ao mapa reverso
         Object.entries(t.tags).forEach(([key, enText]) => {
             allTextsToKey[enText] = key;
@@ -202,10 +222,14 @@ class LanguageManager {
             if (!tag.dataset.tagKey) {
                 const currentText = tag.textContent.trim();
                 const key = allTextsToKey[currentText];
-                if (key) tag.dataset.tagKey = key;
+
+                if (key) {
+                    tag.dataset.tagKey = key;
+                }
             }
 
             const key = tag.dataset.tagKey;
+
             if (key && t.tags[key]) {
                 tag.textContent = t.tags[key];
             }
@@ -214,6 +238,7 @@ class LanguageManager {
 
     updateLanguageButton() {
         const btn = document.getElementById('language-toggle');
+
         if (btn) {
             // O botão exibe o idioma ATUAL (PT quando em português, EN quando em inglês)
             btn.textContent = this.currentLanguage === 'pt' ? 'PT' : 'EN';
@@ -229,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener para o botão de troca de idioma
     const languageToggle = document.getElementById('language-toggle');
+
     if (languageToggle) {
         languageToggle.addEventListener('click', () => {
             const newLang = languageManager.getLanguage() === 'pt' ? 'en' : 'pt';
